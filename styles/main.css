@@ -1,0 +1,249 @@
+main{
+    background-image: url(../img/waves_background_long_2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    height:auto;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.hoverbutton{
+    display:inline-block;
+    border:0.1em solid #445376;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#445376;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+.hoverbutton:hover {
+    color:white;
+    background-color:#445376;
+}
+
+#accordion-holder{
+    display:flex;
+    flex-direction:column;
+    background: rgba(255, 255, 255, 0.75);
+    height:auto;
+    width:80%;
+    height: 60%;
+    margin-top: 25%;
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Website Card Layout */
+#accordion{
+    order:2;
+    width:80%;
+    height:70%;
+    display:flex; 
+    flex-wrap: wrap;
+    flex-direction:row; 
+    justify-content: space-between; 
+    align-items:center;
+    position: relative; 
+    margin-left:10%;
+    opacity:1.75;
+    font-family : 'Open Sans';
+}
+
+.card{
+    background-color: rgba(50, 82, 113, 0.781);
+    border-radius: 5%;
+    width: 30%;
+    margin-top: 12%;
+    padding: 0px;
+    min-width: 350px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-header{
+    border-radius: 5%;
+    padding: 0px; 
+    display: inline;
+    color: white;
+    text-transform: uppercase;
+    margin-left: 20px;
+
+}
+
+.collapse-col{
+    width: 80%; 
+    text-align: left; 
+    display: inline-block; 
+    padding-left: 10px;
+}
+
+/* .but-x{
+    text-align: right;
+    margin-left: 15px;
+    position: absolute;
+    right: 20px;
+} */
+
+.card-body{
+    background-color: rgba(50, 82, 113, 0.719); 
+    opacity: 1; 
+    margin: 0px; 
+    padding: 0px; 
+    position: relative;
+}
+
+.cardBackground{
+    display: block; 
+    margin-left: 0px; 
+    padding: 0px; 
+    height: 100%; 
+    width: 100%; 
+    display: block; 
+    opacity: .8'
+}
+
+.tableInfo{
+    display: block; 
+    color: white; 
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+/* This is for the "X" button for the cards */
+.x{
+    color: white;
+    background: url(./img/x-mark.png) no-repeat;
+    border: none;
+}
+
+
+.overlayInfo{
+    background-color: rgba(0,0,0,.3); 
+    position: absolute; 
+    top: 10%; 
+    left: 10%; 
+    width: 80%; 
+    height: 45%
+}
+
+.list-item{
+    list-style : 'position inside';
+    font-size: 25px;
+    color: white;
+    /* font-weight: bold; */
+    /* text-shadow: 2px 2px #1d1c1c; */
+}
+
+.recipe_style{
+    color: white; 
+    text-decoration: underline; 
+    text-align: center;
+    font-size: 25px;
+    /* text-shadow: 2px 2px #1d1c1c; */
+
+}
+
+#recipeInputContainer {
+    order:1; 
+    width:100%;
+    height:30%;
+    /* bottom: 75%; */
+    top: 1px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Mobile Layout */
+@media screen and (max-width: 1100px){
+    #accordion-holder{
+        background: rgba(255, 255, 255, 0.75);
+
+        height:auto;
+        width:95%;
+        /* padding-top:5%; */
+        margin-top:66%;
+    }
+
+    #accordion{
+        width:100%;
+        display:flex; 
+        flex-direction:column; 
+        justify-content: center; 
+        align-items:center; 
+        margin-left:10%;
+        opacity:1.75;
+        font-family : 'Open Sans';
+        position: relative;
+        margin-left:0px;
+    }
+    .card{
+        margin-top:30px;
+        margin-left:0px;
+        width:1%;
+    }
+
+    .card-header{
+    width:100%;
+    border-radius:5%;
+    padding: 0px; 
+    color: white;
+    text-transform: uppercase;
+    margin-left:0px;
+
+    }
+
+}
+
+/* #random-button{
+    display:inline-block;
+    border:0.1em solid #445376;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#445376;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+#random-button:hover{
+    color:white;
+    background-color:#445376;
+} */
+
+
+@media all and (max-width:30em){
+    .hoverbutton{
+        display:block;
+    }
+}
+
+body {
+    background-image: url(../img/background/plain.png);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Parallax */
+    background-attachment: fixed; 
+}
+.waves{
+    height: 100%;
+    background-image: url(../img/waves_background_long.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+
+
+
+
+
+
