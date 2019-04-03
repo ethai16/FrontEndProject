@@ -4,6 +4,7 @@ $(function () {
 
         document.getElementById("cuisine-input").value = "";
     }
+    
     var i = 0; //used for index of each textque.
     var inputs = [] //used to stores user inputs.
     var count = 0  //used to determine when the textque is completed
@@ -17,7 +18,9 @@ $(function () {
     // var cal_max = '500'; // Needs to be changed based on user input
 
     $('#enter-button').on("click", function () {
+        //disabled button to prevent continuous triggering of event. 
         $('#enter-button').prop("disabled", true);
+        //save inputs into an array
         inputs.push($('#cuisine-input').val())
         ClearFields()
         count++;
@@ -25,6 +28,8 @@ $(function () {
         var recipeque = ["What are you in the mood for?", "These are your choices!", 'Welcome to the Sea!\n What can I assist you with?']
         var restaurantque = ["Great, Where are you currently?", 'Welcome to the Sea! \nWhat can I assist you with?']
         var invalidque = ["Please input a valid response.", 'Welcome to the Sea!\n What can I assist you with?']
+
+        //tells you what dialogue que to follow
         if (inputs[0] == "recipes") {
             console.log(i)
             var srcText = recipeque[i];
@@ -101,6 +106,8 @@ $(function () {
         }
         var l = 0;//used to iterate through each letter of a string
         var result = srcText[l];
+        
+        //typewriter like animation
         setInterval(function () {
             if (l == srcText.length - 1) {
                 clearInterval(this);
@@ -119,26 +126,21 @@ $(function () {
 
         //resets user inputs
         if (i > recipeque.length - 1 && inputs[0] == "recipes") {
-            console.log(inputs)
             i = 0
             inputs = []
-            console.log(inputs)
             count = 0
         } else if (i > restaurantque.length - 1 && inputs[0] == "restaurants") {
-            console.log(inputs)
             i = 0
             inputs = []
-            console.log(inputs)
             count = 0
         } else if (i > invalidque.length - 1 && (inputs[0] != "restaurants" && inputs[0] != "recipes")) {
-            console.log(inputs)
             i = 0
             inputs = []
-            console.log(inputs)
             count = 0
         }else if(srcText == weatherque[0]){
             i=0
         }
+
         if (count == 2 && inputs[0] == "recipes") {
             var $recipeInputContainer = $('<div>', {
                 'id': 'recipeInputContainer',
@@ -157,35 +159,39 @@ $(function () {
                 'id': 'moreRecipeInput',
                 'placeholder': 'What else would you like to eat?'
             })
+
             var $recipeinputButton = $('<button>', {
                 'id': 'recipe-button',
                 'class':'hoverbutton',
                 'style':'font-weight: bold; width:30%; height:15%; min-width:111px',
                 'text': 'ADD'
             })
+
             var $randomButton = $('<button>', {
                 'id': 'random-button',
                 'class':'hoverbutton',
                 'style':'font-weight: bold; width:30%; height:15%; min-width:111px',
                 'text': `RANDOMIZE!`
             })
+
             if ($("#accordion-holder").find("#recipeInputContainer").length == 0){ 
                 $('#accordion-holder').append($recipeInputContainer)
             }
+
             if( $('#recipeInputContainer').is(':empty') ) {
                 $('#recipeInputContainer').append($recipeInput)
                 $('#recipeInputContainer').append($recipeInputButtonContainer)
                 $('#recipeInputButtonContainer').append($recipeinputButton)
                 $('#recipeInputButtonContainer').append($randomButton)
             }
-            // $('#recipeEmptyContainer').append($recipeInputContainer)
             
+            //recipe search for the second text input
             $('#recipe-button').on("click", function () {
                 k = $('.card').length
                 var type = $('#moreRecipeInput').val()
                 $.get(url + type + '&app_id=' + apiId + '&app_key=' + apiKey + '&from=1&to=100') //'&calories=' + cal_min + '-' + cal_max + '&health=alcohol-free')
                     .done((result) => {
-                        console.log(result);
+                        //loop to create a list of 12 for each search
                         while (k < 12) {
                             k++
                             j++
@@ -294,22 +300,15 @@ $(function () {
                         }
                     })
             })
+
             var type = inputs[1]
             $.get(url + type + '&app_id=' + apiId + '&app_key=' + apiKey + '&from=1&to=100') //'&calories=' + cal_min + '-' + cal_max + '&health=alcohol-free')
                 .done((result) => {
-                    console.log(result);
                     while (k < 12) {
                         k++
                         j++
                         let ran = Math.floor(Math.random() * 99) // randomly take one recipe
-                        // let $recipe = $('<div>', {
-                        //   'text': result.hits[ran].recipe.label
-                        // })
-                        // let $recipeimg = $('<img>', {
-                        //   'src': result.hits[ran].recipe.image
-                        // })
-                        // $('#information-box').append($recipe)
-                        // $('#information-box').append($recipeimg)
+
 
                         let $card = $('<div>', {
                             'class': "card",
@@ -413,12 +412,16 @@ $(function () {
                             $(this).parents('.card').get(0).remove()
                         });
                     }
+
+                    //slides window to the displayed recipes
                     setTimeout(()=>{
                         window.location = '#accordion-holder'
 
                     },1250);
                     $('#enter-button').prop("disabled", false);
                 })
+
+            //randomly open's one recipe
             $('#random-button').on("click", function () {
                 var length = $('.card').length;
                 console.log(length)
